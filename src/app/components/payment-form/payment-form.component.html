@@ -1,0 +1,36 @@
+<!-- payment-form.component.html -->
+<div class="payment-form-container">
+  <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Card Number</mat-label>
+      <input
+        matInput
+        formControlName="cardNumber"
+        placeholder="Enter your card number"
+      />
+      <mat-error *ngIf="paymentForm.get('cardNumber')?.hasError('required')"
+        >Card number is required</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Expiration Date</mat-label>
+      <input matInput formControlName="expirationDate" placeholder="MM/YY" />
+      <mat-error *ngIf="paymentForm.get('expirationDate')?.hasError('required')"
+        >Expiration date is required</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>CVC</mat-label>
+      <input matInput formControlName="cvc" placeholder="CVC" />
+      <mat-error *ngIf="paymentForm.get('cvc')?.hasError('required')"
+        >CVC is required</mat-error
+      >
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">
+      Submit Payment
+    </button>
+  </form>
+</div>
